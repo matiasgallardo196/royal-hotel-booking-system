@@ -554,7 +554,6 @@ npm run test:coverage
 
 - [Backend Guide](BACKEND_GUIDE.md) - Backend architecture and setup
 - [Database Schema](DATABASE_SCHEMA.md) - Database design and relationships
-- [Deployment Guide](DEPLOYMENT_GUIDE.md) - Production deployment instructions
 
 ---
 

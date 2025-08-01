@@ -2,11 +2,6 @@
 
 A comprehensive hotel booking system built with modern web technologies, featuring user authentication, appointment management, and real-time notifications.
 
-## 🚀 Live Demo
-
-- **Frontend**: [https://royal-hotel-booking.vercel.app](https://royal-hotel-booking.vercel.app)
-- **Backend API**: [https://royal-hotel-booking-api.onrender.com](https://royal-hotel-booking-api.onrender.com)
-
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -16,7 +11,6 @@ A comprehensive hotel booking system built with modern web technologies, featuri
 - [Project Structure](#project-structure)
 - [API Documentation](#api-documentation)
 - [Database Schema](#database-schema)
-- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -172,7 +166,6 @@ royal-hotel-booking-system/
     ├── API_DOCUMENTATION.md
     ├── BACKEND_GUIDE.md
     ├── DATABASE_SCHEMA.md
-    ├── DEPLOYMENT_GUIDE.md
     ├── FRONTEND_GUIDE.md
     └── README.md
 ```
@@ -185,7 +178,6 @@ For detailed documentation, please refer to the following guides:
 - **[Backend Guide](docs/BACKEND_GUIDE.md)** - Backend architecture and setup
 - **[Frontend Guide](docs/FRONTEND_GUIDE.md)** - Frontend development guide
 - **[Database Schema](docs/DATABASE_SCHEMA.md)** - Database design and queries
-- **[Deployment Guide](docs/DEPLOYMENT_GUIDE.md)** - Production deployment instructions
 
 ## 🔧 Environment Variables
 
@@ -221,16 +213,6 @@ VITE_API_URL=http://localhost:3001
 VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
 VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
 ```
-
-## 🚀 Deployment
-
-The application is deployed on:
-
-- **Frontend**: Vercel
-- **Backend**: Render
-- **Database**: PostgreSQL (Render)
-
-For detailed deployment instructions, see [Deployment Guide](docs/DEPLOYMENT_GUIDE.md).
 
 ## 🧪 Testing
 

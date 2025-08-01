@@ -1,144 +1,144 @@
-# 🚀 Instrucciones de Configuración - Royal Hotel Booking System
+# 🚀 Setup Instructions - Royal Hotel Booking System
 
-## 📋 Pasos para Configurar el Proyecto
+## 📋 Project Setup Steps
 
-### 1. Configuración de Base de Datos
+### 1. Database Configuration
 
-1. **Instalar PostgreSQL** (versión 12 o superior)
-2. **Crear la base de datos**:
+1. **Install PostgreSQL** (version 12 or higher)
+2. **Create the database**:
    ```sql
    CREATE DATABASE royal_hotel_db;
    ```
 
-### 2. Configuración del Backend
+### 2. Backend Configuration
 
-1. **Navegar al directorio del backend**:
+1. **Navigate to the backend directory**:
 
    ```bash
    cd back
    ```
 
-2. **Instalar dependencias**:
+2. **Install dependencies**:
 
    ```bash
    npm install
    ```
 
-3. **Configurar variables de entorno**:
+3. **Configure environment variables**:
 
    ```bash
    cp env.example .env
    ```
 
-4. **Editar el archivo `.env`** con tus credenciales:
+4. **Edit the `.env` file** with your credentials:
 
    ```env
    # Database Configuration
    PORT=3001
    HOST=localhost
    PORTDB=5432
-   USERNAMEDB=tu_usuario_postgres
-   PASSDB=tu_password_postgres
+   USERNAMEDB=your_postgres_user
+   PASSDB=your_postgres_password
    DB=royal_hotel_db
 
    # Security
    SALT_ROUNDS=10
-   JWT_SECRET=tu_clave_secreta_jwt_aqui
+   JWT_SECRET=your_jwt_secret_key_here
 
    # Environment
    ENVIRONMENT=development
 
    # Email Configuration (SendGrid)
-   SENDGRID_API_KEY=tu_api_key_sendgrid
+   SENDGRID_API_KEY=your_sendgrid_api_key
    EMAIL_FROM=noreply@royalhotel.com
 
    # CORS
    FRONTEND_URL=http://localhost:5173
    ```
 
-5. **Iniciar el servidor de desarrollo**:
+5. **Start the development server**:
    ```bash
    npm run start
    ```
 
-### 3. Configuración del Frontend
+### 3. Frontend Configuration
 
-1. **Navegar al directorio del frontend**:
+1. **Navigate to the frontend directory**:
 
    ```bash
    cd front
    ```
 
-2. **Instalar dependencias**:
+2. **Install dependencies**:
 
    ```bash
    npm install
    ```
 
-3. **Configurar variables de entorno**:
+3. **Configure environment variables**:
 
    ```bash
    cp env.example .env
    ```
 
-4. **Editar el archivo `.env`**:
+4. **Edit the `.env` file**:
 
    ```env
    # API Configuration
    VITE_URL_AXIOS=http://localhost:3001
 
-   # Cloudinary Configuration (opcional para subida de imágenes)
-   VITE_CLOUDINARY_CLOUD_NAME=tu_cloud_name
-   VITE_CLOUDINARY_UPLOAD_PRESET=tu_upload_preset
+   # Cloudinary Configuration (optional for image uploads)
+   VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
+   VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
    ```
 
-5. **Iniciar el servidor de desarrollo**:
+5. **Start the development server**:
    ```bash
    npm run dev
    ```
 
-### 4. Verificación de la Instalación
+### 4. Installation Verification
 
-1. **Backend**: Debería estar corriendo en http://localhost:3001
-2. **Frontend**: Debería estar corriendo en http://localhost:5173
-3. **Base de datos**: Verificar conexión en la consola del backend
+1. **Backend**: Should be running on http://localhost:3001
+2. **Frontend**: Should be running on http://localhost:5173
+3. **Database**: Verify connection in the backend console
 
-## 🔧 Servicios Opcionales
+## 🔧 Optional Services
 
-### SendGrid (para emails)
+### SendGrid (for emails)
 
-1. Crear cuenta en [SendGrid](https://sendgrid.com/)
-2. Generar API Key
-3. Configurar en el archivo `.env` del backend
+1. Create account at [SendGrid](https://sendgrid.com/)
+2. Generate API Key
+3. Configure in the backend `.env` file
 
-### Cloudinary (para imágenes)
+### Cloudinary (for images)
 
-1. Crear cuenta en [Cloudinary](https://cloudinary.com/)
-2. Obtener Cloud Name y Upload Preset
-3. Configurar en el archivo `.env` del frontend
+1. Create account at [Cloudinary](https://cloudinary.com/)
+2. Get Cloud Name and Upload Preset
+3. Configure in the frontend `.env` file
 
-## ❌ Problemas Comunes
+## ❌ Common Issues
 
-### Error de conexión a la base de datos
+### Database connection error
 
-- Verificar que PostgreSQL esté corriendo
-- Verificar credenciales en el archivo `.env`
-- Verificar que la base de datos `royal_hotel_db` exista
+- Verify that PostgreSQL is running
+- Verify credentials in the `.env` file
+- Verify that the `royal_hotel_db` database exists
 
-### Error de puerto ocupado
+### Port already in use error
 
-- Verificar que los puertos 3001 y 5173 estén libres
-- Cambiar puertos en los archivos `.env` si es necesario
+- Verify that ports 3001 and 5173 are free
+- Change ports in the `.env` files if necessary
 
-### Error de dependencias
+### Dependencies error
 
-- Eliminar `node_modules` y `package-lock.json`
-- Ejecutar `npm install` nuevamente
+- Delete `node_modules` and `package-lock.json`
+- Run `npm install` again
 
-## 📞 Soporte
+## 📞 Support
 
-Si encuentras problemas durante la configuración:
+If you encounter problems during setup:
 
-1. Revisar la documentación en la carpeta `docs/`
-2. Verificar que todas las dependencias estén instaladas
-3. Verificar la configuración de las variables de entorno
+1. Review the documentation in the `docs/` folder
+2. Verify that all dependencies are installed
+3. Verify the environment variables configuration

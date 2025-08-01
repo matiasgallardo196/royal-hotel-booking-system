@@ -36,7 +36,6 @@ The Royal Hotel Booking System is a comprehensive web application that allows us
 - **[Backend Guide](BACKEND_GUIDE.md)** - Backend architecture, setup, and development guide
 - **[Frontend Guide](FRONTEND_GUIDE.md)** - Frontend development, components, and styling guide
 - **[Database Schema](DATABASE_SCHEMA.md)** - Database design, relationships, and queries
-- **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - Production deployment instructions and best practices
 
 ### Quick References
 
@@ -232,8 +231,7 @@ royal-hotel-booking-system/
     ├── API_DOCUMENTATION.md
     ├── BACKEND_GUIDE.md
     ├── FRONTEND_GUIDE.md
-    ├── DATABASE_SCHEMA.md
-    └── DEPLOYMENT_GUIDE.md
+    └── DATABASE_SCHEMA.md
 ```
 
 ## 📊 Main Functionalities

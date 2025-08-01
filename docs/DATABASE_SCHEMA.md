@@ -448,4 +448,4 @@ LIMIT 10;
 
 ---
 
-For more information about database configuration and optimization, refer to the [Backend Guide](BACKEND_GUIDE.md) and [Deployment Guide](DEPLOYMENT_GUIDE.md).
+For more information about database configuration and optimization, refer to the [Backend Guide](BACKEND_GUIDE.md).
