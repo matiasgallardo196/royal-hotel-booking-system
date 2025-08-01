@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SALT_ROUNDS = exports.DB = exports.PASSDB = exports.USERNAMEDB = exports.PORTDB = exports.HOST = exports.PORT = void 0;
+require("dotenv/config");
+exports.PORT = process.env.PORT;
+exports.HOST = process.env.HOST;
+exports.PORTDB = Number(process.env.PORTDB);
+exports.USERNAMEDB = process.env.USERNAMEDB;
+exports.PASSDB = process.env.PASSDB;
+exports.DB = process.env.DB;
+exports.SALT_ROUNDS = process.env.SALT_ROUNDS;

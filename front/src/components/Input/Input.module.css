@@ -1,0 +1,17 @@
+.Input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 2px solid red; */
+    gap: 0.25em;
+}
+
+.CampoInput{
+    border: 2px solid rgba(0, 0, 0, 0.884);
+    border-radius: 5px;
+}
+
+.CampoInput:hover{
+    background-color: rgba(0, 0, 0, 0.021);
+    color: aliceblue;
+}

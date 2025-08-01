@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* min-height: 100vh; */
+    background-color: #1a1a1a00;
+    color: white;
+    padding: 20px;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.767);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: aliceblue;
+}
+
+.info {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.link {
+    color: #4ea8de;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,128 @@
+/* Reset CSS Completo */
+
+/* Box sizing y eliminación de márgenes y rellenos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Configuración base del documento */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* Previene el zoom automático en móviles */
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+/* Normalización del cuerpo */
+body {
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  font-family: sans-serif;
+  color: #000;
+  background-color: #575656;
+}
+
+/* Estilos para imágenes y medios */
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Listas sin estilos por defecto */
+ul, ol {
+  list-style: none;
+}
+
+/* Enlaces sin estilos */
+a {
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+}
+
+/* Elementos de texto */
+h1, h2, h3, h4, h5, h6, p, blockquote, figure {
+  margin: 0;
+}
+
+/* Tablas sin espaciado */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Botones sin estilos predeterminados */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Inputs y formularios sin estilos predeterminados */
+input, textarea, select, button {
+  font: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Desactivar la apariencia por defecto en iOS */
+input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Ocultar elementos por accesibilidad sin eliminarlos del flujo */
+[hidden] {
+  display: none !important;
+}
+
+/* Normalizar textos en negrita e itálica */
+b, strong {
+  font-weight: bold;
+}
+
+i, em {
+  font-style: italic;
+}
+
+/* Cursor de puntero en elementos interactivos */
+button, a, select {
+  cursor: pointer;
+}
+
+/* Solucionar problemas en navegadores antiguos */
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Ajustar el comportamiento del scroll en anclajes */
+:focus {
+  scroll-margin-top: 0.5em;
+}
+
+/* Evitar que los textos largos se desborden */
+pre, code, kbd, samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Eliminar el estilo de los enlaces visitados en algunos navegadores */
+a:visited {
+  color: inherit;
+}
+
+/* Configuración para deshabilitar el resaltado en móviles */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
