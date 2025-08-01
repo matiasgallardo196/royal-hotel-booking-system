@@ -15,8 +15,8 @@ class UserDto{
     birthdate:Date
     
     @IsNotEmpty({ message: "El DNI no puede estar vacío" })
-    @IsNumber({}, { message: "El DNI debe ser un número" })
-    nDni:number
+    @IsString({ message: "El DNI debe ser una cadena de texto" })
+    nDni:string
     
     @IsNotEmpty({ message: "La contraseña no puede estar vacía" })
     @IsString({ message: "La contraseña debe ser una cadena de texto" })
