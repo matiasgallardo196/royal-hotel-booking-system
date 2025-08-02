@@ -39,7 +39,13 @@ export const UserProvider = ({ children }) => {
       ...datosFormulario,
       nDni: Number(datosFormulario.nDni),
     };
-    datosAEnviar.file = await imgCloudinary(datosFormulario.file);
+
+    // Solo llamar a Cloudinary si hay una imagen seleccionada
+    if (datosFormulario.file) {
+      datosAEnviar.file = await imgCloudinary(datosFormulario.file);
+    } else {
+      datosAEnviar.file = null;
+    }
 
     const respuesta = await axios.post(
       `${URL_AXIOS}/users/register`,
