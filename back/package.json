@@ -38,9 +38,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "kill-port 3000 && nodemon",
+    "dev": "kill-port 3000 && nodemon",
+    "start": "node dist/index.js",
     "build": "tsc",
-    "start:prod": "node dist/server.js"
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
