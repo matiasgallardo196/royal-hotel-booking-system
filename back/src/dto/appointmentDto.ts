@@ -1,23 +1,21 @@
-import { IsInt, IsNotEmpty, IsNumber, IsString, Min } from "class-validator"
+import { IsInt, IsNotEmpty, IsNumber, IsString, Min } from "class-validator";
 
+export class AppointmentScheduleDto {
+  @IsNotEmpty({ message: "Date cannot be empty" })
+  @IsString({ message: "Date must be a string" })
+  date: string;
 
- export class AppointmentScheduleDto{
-    @IsNotEmpty({ message: "La fecha no puede estar vacía" })
-    @IsString({ message: "La fecha debe ser una cadena de texto" })
-    date: string
+  @IsNotEmpty({ message: "Time cannot be empty" })
+  @IsString({ message: "Time must be a string" })
+  time: string;
 
-    @IsNotEmpty({ message: "La hora no puede estar vacía" })
-    @IsString({ message: "La hora debe ser una cadena de texto" })
-    time: string
-
-    @IsNotEmpty({ message: "El ID de usuario no puede estar vacío" })
-    @IsNumber({}, { message: "El ID de usuario debe ser un número" })
-    userId: number
-    
+  @IsNotEmpty({ message: "User ID cannot be empty" })
+  @IsNumber({}, { message: "User ID must be a number" })
+  userId: number;
 }
 
-export class AppointmentIdDto{
-  @IsInt({message:"El ID debe ser un número entero"})
-  @Min(1,{ message: "El ID debe ser mayor que 0" })
-  id:number
+export class AppointmentIdDto {
+  @IsInt({ message: "ID must be an integer" })
+  @Min(1, { message: "ID must be greater than 0" })
+  id: number;
 }

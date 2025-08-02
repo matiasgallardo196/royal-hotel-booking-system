@@ -73,10 +73,10 @@ const Register = () => {
         datosFormulario,
         imgCloudinary
       );
-      successAlert(`Registro exitoso!`, respuesta.statusText);
+      successAlert(`Registration successful!`, respuesta.statusText);
       navigate("/login");
     } catch (error) {
-      errorAlert("Fallo el envio ", error);
+      errorAlert("Submission failed ", error);
     }
   };
 
@@ -86,7 +86,7 @@ const Register = () => {
         <Input
           name="name"
           type="text"
-          body="Nombre:"
+          body="Name:"
           onChange={manejadorDeCambios}
         />
         {touch.name && errors.name && (
@@ -106,7 +106,7 @@ const Register = () => {
         <Input
           name="birthdate"
           type="date"
-          body="Fecha de Nacimiento:"
+          body="Birth Date:"
           onChange={manejadorDeCambios}
         />
         {touch.birthdate && errors.birthdate && (
@@ -116,7 +116,7 @@ const Register = () => {
         <Input
           name="nDni"
           type="number"
-          body="Numero de DNI:"
+          body="ID Number:"
           onChange={manejadorDeCambios}
         />
         {touch.nDni && errors.nDni && (
@@ -126,7 +126,7 @@ const Register = () => {
         <Input
           name="password"
           type="password"
-          body="Contraseña :"
+          body="Password:"
           onChange={manejadorDeCambios}
         />
         {touch.password && errors.password && (
@@ -136,7 +136,7 @@ const Register = () => {
         <Input
           name="file"
           type="file"
-          body="Foto de Perfil :"
+          body="Profile Picture:"
           onChange={manejadorDeCambios}
         />
         {touch.file && errors.file && (

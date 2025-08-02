@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div className={style.Home}>
       <h1>Royal Hotel</h1>
-      <p>Booking service</p>
+      <p>Booking Service</p>
     </div>
   );
 };

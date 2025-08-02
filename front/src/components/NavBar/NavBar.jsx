@@ -12,8 +12,8 @@ const NavBar = () => {
       <LogoNavBar />
       <ul className={styles.buttons}>
         <NavButton texto="Home" link="/" />
-        <NavButton texto="Appointments" link="/my-appointments" />
-        <NavButton texto="Contacto" link="/Contacto" />
+        <NavButton texto="Appointments" link="/mis-turnos" />
+        <NavButton texto="Contact" link="/Contacto" />
         <NavButton texto="About" link="/about" />
 
         {sessionStorage.getItem("user") /*user*/ ? (
@@ -27,7 +27,7 @@ const NavBar = () => {
               </div>
             )}
             <button className={styles.button1} onClick={logout}>
-              Cerrar Sesión
+              Logout
             </button>
           </>
         ) : (

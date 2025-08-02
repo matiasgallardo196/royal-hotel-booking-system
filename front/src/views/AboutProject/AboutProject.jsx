@@ -4,7 +4,7 @@ const AboutProject = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h1 className={styles.title}>Sobre el Proyecto</h1>
+        <h1 className={styles.title}>About the Project</h1>
 
         <p className={styles.description}>
           This project is an online appointment management platform that allows
@@ -13,14 +13,14 @@ const AboutProject = () => {
           facilitate the organization of appointments for different services.
         </p>
 
-        <h2 className={styles.subtitle}>Tecnologías Utilizadas</h2>
+        <h2 className={styles.subtitle}>Technologies Used</h2>
         <ul className={styles.techList}>
           <li>React.js</li>
           <li>Express.js</li>
           <li>PostgreSQL</li>
           <li>Node.js</li>
           <li>Styled Components</li>
-          <li>JWT para autenticación</li>
+          <li>JWT for authentication</li>
         </ul>
       </div>
     </div>

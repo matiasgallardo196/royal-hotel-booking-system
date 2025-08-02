@@ -1,16 +1,12 @@
-import NavButton from "../NavBar/NavButton/NavButton"
-import style from "./RegisterButton.module.css"
+import NavButton from "../NavBar/NavButton/NavButton";
+import style from "./RegisterButton.module.css";
 
+const RegisterButton = () => {
+  return (
+    <div className={style.registerButton}>
+      <NavButton texto={"Register"} link={"/register"} />
+    </div>
+  );
+};
 
-const RegisterButton=()=>{
-
-    return(
-        <div className={style.registerButton}>
-                
-                <NavButton texto={"Registrate"} link={"/register"}/>
-        </div>
-    )
-}
-
-
-export default RegisterButton
+export default RegisterButton;

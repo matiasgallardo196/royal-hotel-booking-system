@@ -1,53 +1,47 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { UserProvider } from "./context/UserContext";
-import NavBar from "./components/NavBar/NavBar";
-import Home from "./views/Home/Home";
-import Login from "./views/Login/Login";
-import Register from "./views/Register/Register";
-import MyAppointments from "./views/MisTurnos/MisTurnos";
-import NewAppointment from "./views/NuevoTurno/NuevoTurno";
-import Contacto from "./views/Contacto/Contacto";
-import AboutProject from "./views/AboutProject/AboutProject";
+import NavBar from './components/NavBar/NavBar'
+import Home from './views/Home/Home'
+import Login from './views/Login/Login'
+import MisTurnos from './views/MisTurnos/MisTurnos'
+import Register from './views/Register/Register'
+import { Navigate, Route, Routes} from "react-router-dom"
+import "./App.css"
+import Contacto from './views/Contacto/Contacto'
+import AboutProject from './views/AboutProject/AboutProject'
+import NuevoTurno from './views/NuevoTurno/NuevoTurno'
+import { useContext } from 'react'
+import { UserContext } from './context/UserContext'
 
 function App() {
+  const {user}=useContext(UserContext)
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <NavBar />
+    <div className="Container">
+      <NavBar/>
+      <div className="Content">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/new-appointment" element={<NewAppointment />} />
-          <Route path="/my-appointments" element={<MyAppointments />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/about" element={<AboutProject />} />
-
-          {/* Protected routes for authenticated users */}
-          <Route
-            path="/my-appointments"
-            element={
-              sessionStorage.getItem("user") ? (
-                <MyAppointments />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
-          <Route
-            path="/new-appointment"
-            element={
-              sessionStorage.getItem("user") ? (
-                <NewAppointment />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
+          <Route path='/' element={<Home/>}/> 
+          {user ? (
+            <>
+              <Route path="/nuevoturno" element={<NuevoTurno />} />
+              <Route path="/mis-turnos" element={<MisTurnos />} />
+              <Route path='/register' element={<Navigate to="/mis-turnos" />} />
+              <Route path='/login' element={<Navigate to="/mis-turnos" />} /> 
+              <Route path="*" element={<Navigate to="/mis-turnos" />} />
+            </>
+          ) : (
+            <>
+              <Route path='/register' element={<Register/>}/>
+              <Route path='/login' element={<Login/>}/> 
+              <Route path="/mis-turnos" element={<Navigate to="/login" />} />
+              <Route path="/nuevoturno" element={<Navigate to="/login" />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </>
+          )}
+          <Route path='/contacto' element={<Contacto/>}/> 
+          <Route path='/about' element={<AboutProject/>}/> 
         </Routes>
-      </BrowserRouter>
-    </UserProvider>
-  );
+      </div>
+    </div>
+  )
 }
 
-export default App;
+export default App

@@ -1,40 +1,33 @@
-const validateNewAppointment = (values) => {
+const validateDateTime = (values) => {
   const error = {};
+  const now = new Date();
 
-  // Date validation
   if (!values.date) {
     error.date = "Date is required";
   } else {
-    const selectedDate = new Date(values.date);
-    const today = new Date();
-    const minDate = new Date();
-    minDate.setHours(today.getHours() + 24);
+    const selectedDate = new Date(`${values.date}T00:00`);
+    const minValidDate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    const dayOfWeek = selectedDate.getDay();
 
-    if (selectedDate < minDate) {
-      error.date = "You must select a date with at least 24 hours in advance";
-    } else {
-      const dayOfWeek = selectedDate.getDay();
-      if (dayOfWeek === 0 || dayOfWeek === 6) {
-        error.date = "Only Monday to Friday appointments are allowed";
-      }
+    if (selectedDate < minValidDate) {
+      error.date = "Must select a date with at least 24 hours notice";
+    } else if (dayOfWeek === 0 || dayOfWeek === 6) {
+      error.date = "Only Monday to Friday are allowed";
     }
   }
 
-  // Time validation
   if (!values.time) {
     error.time = "Time is required";
   } else {
-    const [hours, minutes] = values.time.split(":").map(Number);
-    const appointmentTime = hours * 60 + minutes;
-    const startTime = 9 * 60; // 9:00 AM
-    const endTime = 18 * 60; // 6:00 PM
+    const dummyDate = values.date || "2000-01-01";
+    const selectedDate = new Date(`${dummyDate}T${values.time}`);
+    const selectedHour = selectedDate.getHours();
 
-    if (appointmentTime < startTime || appointmentTime >= endTime) {
-      error.time = "Appointments are only allowed between 9:00 AM and 6:00 PM";
+    if (selectedHour < 9 || selectedHour >= 18) {
+      error.time = "Allowed hours are from 9:00 to 18:00";
     }
   }
 
   return error;
 };
-
-export default validateNewAppointment;
+export default validateDateTime;

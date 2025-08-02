@@ -1,33 +1,35 @@
-import Appointment from "../../components/Turno/Turno";
+import { useContext, useEffect, useState } from "react";
+import Turno from "../../components/Turno/Turno";
 import NavButton from "../../components/NavBar/NavButton/NavButton";
 import styles from "./MisTurnos.module.css";
-import { useState, useEffect } from "react";
-import { getAppointments } from "../../helpers/myAppointments";
+import { UserContext } from "../../context/UserContext";
 
-const MyAppointments = () => {
-  const [appointments, setAppointments] = useState([]);
+const MisTurnos = () => {
+  const [turnos, setTurnos] = useState([]);
+  const { getAppointments } = useContext(UserContext);
 
-  const fetchAppointments = async () => {
+  const fetchTurnos = async () => {
     try {
-      setAppointments(await getAppointments());
+      setTurnos(await getAppointments());
     } catch (error) {
-      console.error("Error fetching appointments:", error);
+      console.error("Error getting appointments:", error);
     }
   };
 
   useEffect(() => {
-    fetchAppointments();
+    fetchTurnos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Appointments View</h1>
-      <NavButton texto={"New Appointment"} link={"/new-appointment"} />
-      {appointments.map((appointment) => {
-        return <Appointment key={appointment.id} {...appointment} />;
+    <>
+      <h1 className={styles.titulo}>Appointments View</h1>
+      <NavButton texto={"New Appointment"} link={"/nuevoturno"} />
+      {turnos.map((turno) => {
+        return <Turno key={turno.id} {...turno} />;
       })}
-    </div>
+    </>
   );
 };
 
-export default MyAppointments;
+export default MisTurnos;

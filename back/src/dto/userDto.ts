@@ -1,30 +1,37 @@
-import { IsDate, IsEmail, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator"
+import {
+  IsDate,
+  IsEmail,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from "class-validator";
 
-class UserDto{
-    @IsNotEmpty({ message: "El email no puede estar vacío" })
-    @IsString({ message: "El nombre no puede estar vacío" })
-    name:string
+class UserDto {
+  @IsNotEmpty({ message: "Name cannot be empty" })
+  @IsString({ message: "Name cannot be empty" })
+  name: string;
 
-    @IsNotEmpty({ message: "El email no puede estar vacío" })
-    @IsString({ message: "El email debe ser una cadena de texto" })
-    @IsEmail({}, { message: "El email debe ser válido" })
-    email:string
-    
-    @IsNotEmpty({ message: "La fecha de nacimiento no puede estar vacía" })
-    @IsDate({ message: "La fecha de nacimiento debe ser una fecha válida" })
-    birthdate:Date
-    
-    @IsNotEmpty({ message: "El DNI no puede estar vacío" })
-    @IsString({ message: "El DNI debe ser una cadena de texto" })
-    nDni:string
-    
-    @IsNotEmpty({ message: "La contraseña no puede estar vacía" })
-    @IsString({ message: "La contraseña debe ser una cadena de texto" })
-    password:string
+  @IsNotEmpty({ message: "Email cannot be empty" })
+  @IsString({ message: "Email must be a string" })
+  @IsEmail({}, { message: "Email must be valid" })
+  email: string;
 
-    @IsOptional()
-    @IsString({ message: "El archivo debe ser una cadena de texto" })
-    file?: string | null;
+  @IsNotEmpty({ message: "Birth date cannot be empty" })
+  @IsDate({ message: "Birth date must be a valid date" })
+  birthdate: Date;
+
+  @IsNotEmpty({ message: "ID number cannot be empty" })
+  @IsNumber({}, { message: "ID number must be a number" })
+  nDni: number;
+
+  @IsNotEmpty({ message: "Password cannot be empty" })
+  @IsString({ message: "Password must be a string" })
+  password: string;
+
+  @IsOptional()
+  @IsString({ message: "File must be a string" })
+  file?: string | null;
 }
 
-export default UserDto
+export default UserDto;

@@ -1,79 +1,88 @@
 import style from "./NuevoTurno.module.css";
-import { useState } from "react";
-import validateNewAppointment from "../../helpers/validateNuevoTurno";
+import { useContext, useEffect, useState } from "react";
+import Input from "../../components/Input/Input";
+import validateDateTime from "../../helpers/validateNuevoTurno";
 import { useNavigate } from "react-router-dom";
-import { postAppointment } from "../../helpers/myAppointments";
-import { successAlert, errorAlert } from "../../helpers/alerts";
+import { errorAlert, successAlert } from "../../helpers/alerts";
+import { UserContext } from "../../context/UserContext";
 
-const NewAppointment = () => {
-  const [formData, setFormData] = useState({
+const NuevoTurno = () => {
+  const { createAppointment } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const [datosFormulario, setDatosFormulario] = useState({
     date: "",
     time: "",
   });
-  const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const validationErrors = validateNewAppointment(formData);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+  const [errors, setErrors] = useState({
+    date: "Date is required",
+    time: "Time is required",
+  });
 
-    try {
-      await postAppointment(formData);
-      successAlert("Appointment created successfully!");
-      navigate("/my-appointments");
-    } catch (error) {
-      errorAlert(error.message || "Failed to create appointment");
-    }
+  const [touch, setTouch] = useState({
+    date: false,
+    time: false,
+  });
+
+  useEffect(() => {
+    setErrors(validateDateTime(datosFormulario));
+  }, [datosFormulario]);
+
+  const manejadorDeCambios = (evento) => {
+    const { name, value } = evento.target;
+    setDatosFormulario({ ...datosFormulario, [name]: value });
+    setTouch({ ...touch, [name]: true });
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
+  const enviadorDeCambios = async (evento) => {
+    evento.preventDefault();
+    try {
+      const respuesta = await createAppointment(errors, datosFormulario);
+      successAlert(
+        "Registration successful",
+        `Date: ${respuesta.data.date} Time: ${respuesta.data.time} `
+      );
+      navigate("/mis-turnos");
+    } catch (error) {
+      errorAlert("Submission failed ", error);
     }
   };
 
   return (
-    <div className={style.container}>
-      <form onSubmit={handleSubmit} className={style.form}>
+    <div>
+      <form className={style.form} onSubmit={enviadorDeCambios}>
         <h1>New Appointment</h1>
-
-        <input
-          type="date"
+        <Input
           name="date"
-          value={formData.date}
-          onChange={handleChange}
-          className={errors.date ? style.error : ""}
+          type="date"
+          body="Day:"
+          onChange={manejadorDeCambios}
         />
-        {errors.date && <p className={style.errorText}>{errors.date}</p>}
+        {touch.date && errors.date && (
+          <p style={{ color: "red" }}>{errors.date}</p>
+        )}
 
-        <input
-          type="time"
+        <Input
           name="time"
-          value={formData.time}
-          onChange={handleChange}
-          className={errors.time ? style.error : ""}
+          type="time"
+          body="Time:"
+          onChange={manejadorDeCambios}
         />
-        {errors.time && <p className={style.errorText}>{errors.time}</p>}
+        {touch.time && errors.time && (
+          <p style={{ color: "red" }}>{errors.time}</p>
+        )}
 
-        <button type="submit" className={style.button}>
-          Create Appointment
+        <button
+          disabled={errors.date || errors.time}
+          className={style.boton}
+          type="submit"
+        >
+          Submit
         </button>
       </form>
     </div>
   );
 };
 
-export default NewAppointment;
+export default NuevoTurno;

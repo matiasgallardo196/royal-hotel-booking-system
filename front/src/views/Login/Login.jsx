@@ -42,9 +42,9 @@ const Login = () => {
     try {
       const respuesta = await login(error, datosLogin);
       successAlert(`Welcome, ${respuesta?.data?.user?.name}!`);
-      navigate("/my-appointments");
+      navigate("/mis-turnos");
     } catch (error) {
-      errorAlert("No se pudo loguear: ", error);
+      errorAlert("Could not login: ", error);
     }
   };
 
@@ -54,7 +54,7 @@ const Login = () => {
         <Input
           name="username"
           type="text"
-          body="Correo Electronico :"
+          body="Email:"
           onChange={manejadorCambios} /*onBlur={onBlurHandler}*/
         />
         {error.username && touch.username && (
@@ -63,7 +63,7 @@ const Login = () => {
         <Input
           name="password"
           type="password"
-          body="Contraseña :"
+          body="Password:"
           onChange={manejadorCambios} /*onBlur={onBlurHandler}*/
         />
         {error.password && touch.password && (
@@ -74,7 +74,7 @@ const Login = () => {
           disabled={error.password || error.username}
           type="submit"
         >
-          Loguearse
+          Login
         </button>
         <RegisterButton />
       </form>

@@ -1,36 +1,23 @@
-const validateCancellationTime = (appointment) => {
-  // Check if appointment data is valid
-  if (
-    !appointment ||
-    !appointment.date ||
-    !appointment.time ||
-    !appointment.status
-  ) {
-    return "Invalid appointment data";
+const validarTiempoCancelacion = (turno) => {
+  if (!turno || !turno.date || !turno.time || !turno.status) {
+    return "Missing data to validate cancellation.";
   }
 
-  // Check if appointment is active
-  if (appointment.status.toLowerCase() !== "active") {
-    return "Only ACTIVE appointments can be cancelled.";
+  if (turno.status.toLowerCase() !== "active") {
+    return "Only appointments with ACTIVE status can be cancelled.";
   }
 
-  // Calculate appointment date and time
-  const appointmentDateTime = new Date(
-    `${appointment.date}T${appointment.time}`
-  );
-  const now = new Date();
+  const turnoFechaHora = new Date(`${turno.date}T${turno.time}`);
 
-  // Calculate minimum cancellation time (24 hours before)
-  const minCancellationTime = new Date(
-    appointmentDateTime.getTime() - 24 * 60 * 60 * 1000
-  );
+  const ahora = new Date();
 
-  // Check if it's too late to cancel
-  if (appointmentDateTime <= minCancellationTime) {
-    return "Appointments can only be cancelled with at least 24 hours notice.";
+  const minCancelacion = new Date(ahora.getTime() + 24 * 60 * 60 * 1000);
+
+  if (turnoFechaHora <= minCancelacion) {
+    return "Appointment can only be cancelled with at least 24 hours notice.";
   }
 
-  return null; // No error
+  return null;
 };
 
-export default validateCancellationTime;
+export default validarTiempoCancelacion;
