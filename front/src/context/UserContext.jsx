@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
     user.token = respuesta.data.token;
 
     setUser(user);
-    console.log(user);
+    //console.log(user);
     sessionStorage.setItem("user", JSON.stringify(user));
 
     return respuesta;
