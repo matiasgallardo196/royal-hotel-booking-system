@@ -88,6 +88,12 @@ A full-stack web application for hotel appointment management, built with React 
    cd front && npm run dev
    ```
 
+## Live Demo
+
+- **Frontend**: [Royal Hotel Booking System](https://cute-fox-c52c9e.netlify.app/) (Netlify)
+- **Backend API**: [API Documentation](https://royal-hotel-booking-system-production.up.railway.app/) (Railway)
+- **Database**: PostgreSQL hosted on Railway
+
 ## API Endpoints
 
 - `POST /users/register` - User registration
