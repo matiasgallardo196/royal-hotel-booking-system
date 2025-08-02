@@ -1,4 +1,4 @@
-import { AppointmentScheduleDto } from "../dto/AppointmentDto";
+import { AppointmentScheduleDto } from "../dto/appointmentDto";
 import { Appointment } from "../entities/Appointment";
 import { AppointmentStatus } from "../interfaces/IAppointment";
 import { User } from "../entities/User";

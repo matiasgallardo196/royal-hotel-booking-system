@@ -1,5 +1,5 @@
 import { EntityManager } from "typeorm";
-import CredentialDto from "../dto/CredentialDto";
+import CredentialDto from "../dto/credentialDto";
 import { Credential } from "../entities/Credential";
 import hashUtils from "../utils/hashUtils";
 import credentialRepository from "../repositories/credentialRepository";

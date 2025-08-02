@@ -1,6 +1,6 @@
 import { plainToInstance } from "class-transformer";
 import { NextFunction, Request, Response } from "express";
-import CredentialDto from "../dto/CredentialDto";
+import CredentialDto from "../dto/credentialDto";
 import { validate } from "class-validator";
 
 const validateCredentialDto = async (
@@ -19,7 +19,7 @@ const validateCredentialDto = async (
       status: 400,
       error: "BadRequest",
       message: "The provided data is not valid",
-      details: errors.map((err) => ({
+      details: errors.map((err: any) => ({
         property: err.property,
         constraints: err.constraints,
       })),

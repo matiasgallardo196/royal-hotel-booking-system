@@ -1,12 +1,12 @@
 import { AppDataSource } from "../config/data-source";
-import UserDto from "../dto/UserDto";
+import UserDto from "../dto/userDto";
 import { User } from "../entities/User";
 import {
   createCredentialService,
   validateCredential,
 } from "./credentialService";
 import { Credential } from "../entities/Credential";
-import CredentialDto from "../dto/CredentialDto";
+import CredentialDto from "../dto/credentialDto";
 import { ILogin } from "../interfaces/ILogin";
 import userRepository from "../repositories/userRepository";
 import { generateToken } from "../utils/authUtils";
