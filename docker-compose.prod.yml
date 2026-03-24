@@ -40,8 +40,10 @@ services:
       context: ./front
       dockerfile: Dockerfile
       args:
-        VITE_URL_AXIOS: ${VITE_URL_AXIOS}
+        VITE_URL_AXIOS: /api
     restart: always
+    depends_on:
+      - api
 
 volumes:
   pgdata:
