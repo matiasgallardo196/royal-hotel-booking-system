@@ -19,8 +19,6 @@ services:
       context: ./back
       dockerfile: Dockerfile
     restart: always
-    ports:
-      - "${PORT}:${PORT}"
     environment:
       PORT: ${PORT}
       HOST: db
@@ -44,8 +42,6 @@ services:
       args:
         VITE_URL_AXIOS: ${VITE_URL_AXIOS}
     restart: always
-    ports:
-      - "80:80"
 
 volumes:
   pgdata:
