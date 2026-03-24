@@ -1,0 +1,51 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${USERNAMEDB}
+      POSTGRES_PASSWORD: ${PASSDB}
+      POSTGRES_DB: ${DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${USERNAMEDB} -d ${DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      PORT: ${PORT}
+      HOST: db
+      PORTDB: 5432
+      USERNAMEDB: ${USERNAMEDB}
+      PASSDB: ${PASSDB}
+      DB: ${DB}
+      SALT_ROUNDS: ${SALT_ROUNDS}
+      JWT_SECRET: ${JWT_SECRET}
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      EMAIL_FROM: ${EMAIL_FROM}
+      ENVIRONMENT: ${ENVIRONMENT}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+      args:
+        VITE_URL_AXIOS: ${VITE_URL_AXIOS}
+    restart: always
+    ports:
+      - "80:80"
+
+volumes:
+  pgdata:
